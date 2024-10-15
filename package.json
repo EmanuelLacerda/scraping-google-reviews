@@ -1,0 +1,19 @@
+{
+  "name": "scraping-google-reviews",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "moment": "^2.30.1",
+    "puppeteer": "^23.5.3",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-python-requirements": "^6.1.1",
+    "serverless-wsgi": "^3.0.4"
+  }
+}
