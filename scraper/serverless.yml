@@ -8,11 +8,11 @@ service: scraper
 provider:
   name: aws
   runtime: nodejs20.x
+  timeout: 180
+  memorySize: 2000
 
 functions:
-  hello:
-    handler: handler.hello
+  dispatcher:
+    handler: dispatcher.dispatch
     events:
-      - httpApi:
-          path: /
-          method: get
+      - sns: dispatch
