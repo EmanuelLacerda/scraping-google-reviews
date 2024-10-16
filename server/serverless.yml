@@ -35,7 +35,7 @@ plugins:
 
 custom:
   wsgi:
-    app: myapi.wsgi.application
+    app: api.wsgi.application
   pythonRequirements:
     fileName: requirements/prod.txt
 
