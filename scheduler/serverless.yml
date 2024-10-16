@@ -1,0 +1,22 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: emanuelsl
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: scheduler
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: scheduler2
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  rateHandler:
+    handler: handler.run
+    events:
+      - schedule: rate(10 minutes)
+    environment:
+      SNS_TOPIC_ARN: ${env:SNS_TOPIC_ARN}
+
+plugins:
+  - serverless-dotenv-plugin
+
