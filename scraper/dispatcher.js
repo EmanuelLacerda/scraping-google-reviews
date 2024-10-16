@@ -129,8 +129,7 @@ async function getGoggleReviewBusiness(businessURL) {
 
 module.exports.dispatch =async (event) => {
   try {
-    // const { url } = JSON.parse(event.body);
-    const url = "https://www.google.com/maps/place/Nema+Padaria+Visconde+de+Piraj%C3%A1/@-22.9841517,-43.2128543,15z/data=!3m1!5s0x9bd50757e02857:0x35aa6a9b37f5d532!4m8!3m7!1s0x9bd58a0cdc1487:0x4c1eb56d62eb469b!8m2!3d-22.9841545!4d-43.2128547!9m1!1b1!16s%2Fg%2F11j20tdp78?entry=ttu&g_ep=EgoyMDI0MTAwOS4wIKXMDSoASAFQAw%3D%3D"
+    const { url } = JSON.parse(event.body);
 
     const data = await getGoggleReviewBusiness(url);
 
