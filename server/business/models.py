@@ -45,7 +45,7 @@ class Review(Base):
 
     # Review
     rating = models.DecimalField(default=0.0, blank=True, max_digits=3, decimal_places=2, validators=[MaxValueValidator(5.0)])
-    approximateDate = models.DateField()
+    approximateDate = models.DateTimeField()
     description = models.TextField()
 
     class Meta:
