@@ -1,8 +1,31 @@
 
+const axios = require('axios')
 const puppeteerExtra = require('puppeteer-extra');
 const stealthPlugin = require('puppeteer-extra-plugin-stealth')
 const chromium = require('@sparticuz/chromium');
 const moment = require('moment');
+
+async function updateBusiness(id, data){
+  const response = await apiV1.patch(`business/${id}/`, data, {
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+
+  return response.data;
+}
+
+async function createReviews(businessID, data){
+  const response = await apiV1.post('reviews/', data, {
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+
+  return response.data;
+}
+
+
 
 async function autoScrollUntilAllNewReviewsAreLoaded(page, totalNewReviews) {
   return await page.evaluate(async (totalNewReviews) => {
@@ -117,7 +140,7 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
         return {
           reviewerProfilePicture: review.querySelector("div:first-child > button > img").getAttribute("src"),
           reviewerName: review.querySelector(".GHT2ce > div:last-child > .WNxzHc > button > .d4r55 ").innerHTML,
-          rating: review.querySelector("div:last-child > .DU9Pgb > .kvMYJc").getAttribute("aria-label").replace(" estrelas","").replace(" estrela",""),
+          rating: review.querySelector("div:last-child > .DU9Pgb > .kvMYJc").getAttribute("aria-label").replace(" stars","").replace(" star",""),
           approximateDate: review.querySelector("div:last-child > .DU9Pgb > .rsqaWe").innerHTML,
           description,
         }
@@ -146,9 +169,36 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
 module.exports.dispatch =async (event) => {
   try {
     const body = JSON.stringify(event.body);
-    const { id, url, generalRating, totalReviews  } = JSON.parse(body);
+    const { id  } = JSON.parse(body);
 
-    const data = await getGoggleReviewBusiness(url, totalReviews);
+    const apiV1 = axios.create({ baseURL: 'https://gxxixj7gkh.execute-api.us-east-1.amazonaws.com/stg/api/v1/' })
+
+    const response = await apiV1.get(`business/${id}/`);
+    const { url, general_rating: generalRating, total_reviews: totalReviews, ...rest } = response.data
+
+    const data = await getGoggleReviewBusiness(url, 630)
+    
+    if(Object.keys(data).length > 0){
+        if(generalRating !== data.generalRating){
+          updateBusiness(id, {
+            "general_rating": data.generalRating,
+            "total_reviews": data.totalReviews
+          })
+        } else{
+          updateBusiness(id, {
+            "total_reviews": data.totalReviews
+          })
+        }
+
+        data.reviews.forEach(review => console.log({
+            "business": id,
+            "profile_picture": review.reviewerProfilePicture,
+            "name": review.reviewerName,
+            "rating": Number(review.rating),
+            "approximateDate": review.approximateDate,
+            "description": review.description
+        }))
+    }
 
     return {
       statusCode: 200,
