@@ -12,7 +12,13 @@ class BusinessViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'])
     def reviews(self, request, pk=None):
         business = self.get_object()
-        serializer = ReviewSerializer(business.reviews.all(), many=True)
+        review_id = request.query_params.get('review_id')
+
+        if review_id:
+            review = business.reviews.get(id=review_id)
+            serializer = ReviewSerializer(review)
+        else:
+            serializer = ReviewSerializer(business.reviews.all(), many=True)
 
         return Response(serializer.data)
 

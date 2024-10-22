@@ -25,7 +25,7 @@ class Business(Base):
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True, error_messages={'unique': 'Um business com esse celular já foi cadastrado.'})
 
     # Google Meet Infos
-    url = models.URLField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True, max_length=1000)
     general_rating = models.DecimalField(default=0.0, blank=True, max_digits=3, decimal_places=2, validators=[MaxValueValidator(5.0)])
     total_reviews = models.PositiveIntegerField(default=0, blank=True, null=True)
 
@@ -40,7 +40,7 @@ class Review(Base):
     business = models.ForeignKey(Business, related_name='reviews', on_delete=models.CASCADE)
 
     # Reviewer
-    profile_picture = models.CharField(max_length=700, blank=True)
+    profile_picture = models.URLField(blank=True, null=True, max_length=1000)
     name = models.CharField(max_length=255)
 
     # Review
