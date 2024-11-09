@@ -8,6 +8,11 @@ service: scheduler2
 provider:
   name: aws
   runtime: nodejs20.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'sqs:SendMessage'
 
 functions:
   rateHandler:
