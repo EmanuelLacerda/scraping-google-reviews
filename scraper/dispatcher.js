@@ -5,6 +5,9 @@ const stealthPlugin = require('puppeteer-extra-plugin-stealth')
 const chromium = require('@sparticuz/chromium');
 const moment = require('moment');
 
+
+const apiV1 = axios.create({ baseURL: process.env.BASE_URL_API_V1 })
+
 async function updateBusiness(id, data){
   const response = await apiV1.patch(`business/${id}/`, data, {
       headers: {
@@ -33,7 +36,7 @@ async function autoScrollUntilAllNewReviewsAreLoaded(page, totalNewReviews) {
 
       const totalReviewsLoaded = await new Promise((resolve, reject) => {
           const distance = 5000;
-          const scrollDelay = 3000;
+          const scrollDelay = 100;
 
           const timer = setInterval(async () => {
               wrapper.scrollBy(0, distance);
@@ -91,6 +94,7 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
     executablePath: await chromium.executablePath(),
     headless: chromium.headless,
     ignoreHTTPSErrors: true,
+    protocolTimeout: 800000,
   });
   const page = await browser.newPage();
 
@@ -148,7 +152,7 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
     }, totalNewReviews)
 
     result.generalRating = generalRating;
-    result.totalReviews = totalReviews;
+    result.totalNewReviews = totalNewReviews;
     result.reviews = reviews;
   }
 
@@ -171,33 +175,33 @@ module.exports.dispatch =async (event) => {
     const body = JSON.stringify(event.body);
     const { id  } = JSON.parse(body);
 
-    const apiV1 = axios.create({ baseURL: 'https://gxxixj7gkh.execute-api.us-east-1.amazonaws.com/stg/api/v1/' })
-
     const response = await apiV1.get(`business/${id}/`);
     const { url, general_rating: generalRating, total_reviews: totalReviews, ...rest } = response.data
 
     const data = await getGoggleReviewBusiness(url, 630)
     
     if(Object.keys(data).length > 0){
-        if(generalRating !== data.generalRating){
-          updateBusiness(id, {
-            "general_rating": data.generalRating,
-            "total_reviews": data.totalReviews
-          })
-        } else{
-          updateBusiness(id, {
-            "total_reviews": data.totalReviews
-          })
-        }
+      if(generalRating !== data.generalRating){
+        await updateBusiness(id, {
+          "general_rating": data.generalRating,
+          "total_reviews": data.totalReviews
+        })
+      } else{
+        await updateBusiness(id, {
+          "total_reviews": data.totalReviews
+        })
+      }
 
-        data.reviews.forEach(review => console.log({
-            "business": id,
-            "profile_picture": review.reviewerProfilePicture,
-            "name": review.reviewerName,
-            "rating": Number(review.rating),
-            "approximateDate": review.approximateDate,
-            "description": review.description
-        }))
+      Promise.all(data.reviews.map(review => {
+        return createReviews(id, {
+          "business": id,
+          "profile_picture": review.reviewerProfilePicture,
+          "name": review.reviewerName,
+          "rating": Number(review.rating),
+          "approximateDate": review.approximateDate,
+          "description": review.description
+        })
+      }))
     }
 
     return {
