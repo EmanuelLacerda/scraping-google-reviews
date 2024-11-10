@@ -25,3 +25,12 @@ functions:
 plugins:
   - serverless-dotenv-plugin
 
+resources:
+  Resources:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${env:SQS_NAME}
+        FifoQueue: True
+        MessageRetentionPeriod: 600
+        ReceiveMessageWaitTimeSeconds: 0
