@@ -12,7 +12,10 @@ provider:
     role:
       statements:
         - Effect: Allow
-          Action: 'sqs:SendMessage'
+          Action:
+            - 'sqs:SendMessage'
+          Resource
+            - arn:aws:sqs:::${env:SQS_NAME}
 
 functions:
   rateHandler:
