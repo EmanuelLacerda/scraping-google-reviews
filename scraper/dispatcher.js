@@ -1,12 +1,13 @@
 
-const axios = require('axios')
-const puppeteerExtra = require('puppeteer-extra');
-const stealthPlugin = require('puppeteer-extra-plugin-stealth')
-const chromium = require('@sparticuz/chromium');
-const moment = require('moment');
+import { create } from 'axios';
+import { use, launch } from 'puppeteer-extra';
+import stealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { args as _args, defaultViewport as _defaultViewport, executablePath as _executablePath, headless as _headless } from '@sparticuz/chromium';
+import moment from 'moment';
 
 
-const apiV1 = axios.create({ baseURL: process.env.BASE_URL_API_V1 })
+
+const apiV1 = create({ baseURL: process.env.BASE_URL_API_V1 })
 
 async function updateBusiness(id, data){
   const response = await apiV1.patch(`business/${id}/`, data, {
@@ -86,13 +87,13 @@ async function sortReviewsByMostRecent(page) {
 async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabase) {
   const result = {}
 
-  puppeteerExtra.use(stealthPlugin());
+  use(stealthPlugin());
 
-  const browser = await puppeteerExtra.launch({
-    args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(),
-    headless: chromium.headless,
+  const browser = await launch({
+    args: _args,
+    defaultViewport: _defaultViewport,
+    executablePath: await _executablePath(),
+    headless: _headless,
     ignoreHTTPSErrors: true,
     protocolTimeout: 800000,
   });
@@ -170,7 +171,7 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
   return result;
 };
 
-module.exports.dispatch =async (event) => {
+export async function dispatch(event) {
   try {
     const body = JSON.stringify(event.body);
     const { id  } = JSON.parse(body);
