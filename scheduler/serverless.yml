@@ -3,7 +3,7 @@ org: emanuelsl
 # "app" enables Serverless Framework Dashboard features and sharing them with other Services.
 app: scheduler
 # "service" is the name of this project. This will also be added to your AWS resource names.
-service: scheduler2
+service: scheduler
 
 provider:
   name: aws
@@ -14,16 +14,14 @@ provider:
         - Effect: Allow
           Action:
             - 'sqs:SendMessage'
-          Resource
-            - arn:aws:sqs:::${env:SQS_NAME}
+          Resource:
+            - Fn::GetAtt: [ SQSQueue, Arn ]
 
 functions:
   rateHandler:
     handler: handler.run
     events:
       - schedule: rate(10 minutes)
-    environment:
-      SNS_TOPIC_ARN: ${env:SNS_TOPIC_ARN}
 
 plugins:
   - serverless-dotenv-plugin
@@ -35,5 +33,7 @@ resources:
       Properties:
         QueueName: ${env:SQS_NAME}
         FifoQueue: True
+        ContentBasedDeduplication: True
         MessageRetentionPeriod: 600
         ReceiveMessageWaitTimeSeconds: 0
+        VisibilityTimeout: 300
