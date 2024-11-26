@@ -1,26 +1,24 @@
-const AWS = require('aws-sdk');
+import axios from 'axios';
+import dotenv from 'dotenv';
 
-exports.run = async () => {
-    const sns = new AWS.SNS({ region: 'us-east-1' });
+import { SQS } from '@aws-sdk/client-sqs';
 
-    const data = [
-        { "url": "https://www.google.com/maps/place/Nema/@-22.9841517,-43.2128543,15z/data=!4m5!3m4!1s0x0:0x4c1eb56d62eb469b!8m2!3d-22.9841517!4d-43.2128543?shorturl=1" },
-        { "url": "https://www.google.com/maps/place/Nema+Padaria+Humait%C3%A1/@-22.9561199,-43.2051002,15z/data=!4m8!3m7!1s0x997fd3ce25318b:0x17650611ede4f2c9!8m2!3d-22.956128114d-43.196346219m1!1b1!16s%2Fg%2F11pqxzwzs?entry=ttu&gep=EgoyMDI0MTAWOS4WIKXMDSOASAFQAW%3D%D" }
-    ];
+dotenv.config();
 
-    const topicArn = process.env.SNS_TOPIC_ARN;
+const apiV1 = axios.create({ baseURL: process.env.BASE_URL_API_V1 })
 
-    for (const item of data) {
-        const params = {
-            Message: item.url,
-            TopicArn: topicArn
-        };
+const sqs = new SQS({ apiVersion: '2012-11-05' });
 
-        try {
-            const data = await sns.publish(params).promise();
-            console.log('Mensagem enviada com sucesso:', data.MessageId);
-        } catch (err) {
-            console.error(err);
-        }
+export async function run() {
+    const response = await apiV1.get(`business/`);
+
+    for(const business of response.data){
+        const result = await sqs.sendMessage({
+            MessageGroupId: business.id,
+            MessageBody: `${business.id}`,
+            QueueUrl: process.env.SQS_QUEUE_URL,
+        })
+
+        console.log(`Message sent to the SQS queue with MessageId: ${result.MessageId}`);
     }
-};
+}
