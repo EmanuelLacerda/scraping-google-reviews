@@ -1,13 +1,15 @@
+import axios from 'axios';
+import dotenv from 'dotenv';
 
-import { create } from 'axios';
-import { use, launch } from 'puppeteer-extra';
+import puppeteerExtra from 'puppeteer-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
-import { args as _args, defaultViewport as _defaultViewport, executablePath as _executablePath, headless as _headless } from '@sparticuz/chromium';
+import chromium from '@sparticuz/chromium';
+
 import moment from 'moment';
 
+dotenv.config();
 
-
-const apiV1 = create({ baseURL: process.env.BASE_URL_API_V1 })
+const apiV1 = axios.create({ baseURL: process.env.BASE_URL_API_V1 })
 
 async function updateBusiness(id, data){
   const response = await apiV1.patch(`business/${id}/`, data, {
@@ -87,13 +89,13 @@ async function sortReviewsByMostRecent(page) {
 async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabase) {
   const result = {}
 
-  use(stealthPlugin());
+  puppeteerExtra.use(stealthPlugin());
 
-  const browser = await launch({
-    args: _args,
-    defaultViewport: _defaultViewport,
-    executablePath: await _executablePath(),
-    headless: _headless,
+  const browser = await puppeteerExtra.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
     ignoreHTTPSErrors: true,
     protocolTimeout: 800000,
   });
@@ -154,7 +156,8 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
 
     result.generalRating = generalRating;
     result.totalNewReviews = totalNewReviews;
-    result.reviews = reviews;
+    result.totalReviews = totalReviews;
+    result.reviews = reviews.reverse();
   }
 
   const pages = await browser.pages();
@@ -173,41 +176,54 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
 
 export async function dispatch(event) {
   try {
-    const body = JSON.stringify(event.body);
-    const { id  } = JSON.parse(body);
+    const businessScrapingData = [];
 
-    const response = await apiV1.get(`business/${id}/`);
-    const { url, general_rating: generalRating, total_reviews: totalReviews, ...rest } = response.data
+    for (const record of event.Records){
+        let id;
 
-    const data = await getGoggleReviewBusiness(url, 630)
-    
-    if(Object.keys(data).length > 0){
-      if(generalRating !== data.generalRating){
-        await updateBusiness(id, {
-          "general_rating": data.generalRating,
-          "total_reviews": data.totalReviews
-        })
-      } else{
-        await updateBusiness(id, {
-          "total_reviews": data.totalReviews
-        })
-      }
+        try {
+          id = Number(record.body);
+        } catch (error) {
+          throw new Error(error)
+        }
 
-      Promise.all(data.reviews.map(review => {
-        return createReviews(id, {
-          "business": id,
-          "profile_picture": review.reviewerProfilePicture,
-          "name": review.reviewerName,
-          "rating": Number(review.rating),
-          "approximateDate": review.approximateDate,
-          "description": review.description
-        })
-      }))
+        const response = await apiV1.get(`business/${id}/`);
+        const { url, general_rating: generalRating, total_reviews: totalReviews, ...rest } = response.data;
+
+        const data = await getGoggleReviewBusiness(url, totalReviews);
+
+        businessScrapingData.push(data);
+        
+
+        if(Object.keys(data).length > 0){
+          if(generalRating !== data.generalRating){
+            await updateBusiness(id, {
+              "general_rating": data.generalRating,
+              "total_reviews": data.totalReviews
+            })
+          } else{
+            await updateBusiness(id, {
+              "total_reviews": data.totalReviews
+            })
+          }
+
+          Promise.all(data.reviews.map(review => {
+            console.log(`Review de ${review.reviewerName} no business de id ${id}`);
+            return createReviews(id, {
+              "business": id,
+              "profile_picture": review.reviewerProfilePicture,
+              "name": review.reviewerName,
+              "rating": Number(review.rating),
+              "approximateDate": review.approximateDate,
+              "description": review.description
+            })
+          }))
+        }
     }
 
     return {
       statusCode: 200,
-      data,
+      businessScrapingData,
     };
   } catch (error) {
     return {
@@ -217,6 +233,4 @@ export async function dispatch(event) {
       })
     }
   }
-
-  
 }
