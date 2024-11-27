@@ -207,9 +207,8 @@ export async function dispatch(event) {
             })
           }
 
-          Promise.all(data.reviews.map(review => {
-            console.log(`Review de ${review.reviewerName} no business de id ${id}`);
-            return createReviews(id, {
+          await Promise.all(data.reviews.map(async review => {
+            return await createReviews(id, {
               "business": id,
               "profile_picture": review.reviewerProfilePicture,
               "name": review.reviewerName,
