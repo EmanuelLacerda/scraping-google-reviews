@@ -10,9 +10,17 @@ provider:
   runtime: nodejs20.x
   timeout: 300
   memorySize: 2000
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - 'sqs:ReceiveMessage'
+          Resource:
+            - ${env:SQS_ARN}
 
 functions:
   dispatcher:
     handler: dispatcher.dispatch
     events:
-      - sns: dispatch
+      - sqs: ${env:SQS_ARN}

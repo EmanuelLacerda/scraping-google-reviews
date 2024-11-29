@@ -1,10 +1,13 @@
+import axios from 'axios';
+import dotenv from 'dotenv';
 
-const axios = require('axios')
-const puppeteerExtra = require('puppeteer-extra');
-const stealthPlugin = require('puppeteer-extra-plugin-stealth')
-const chromium = require('@sparticuz/chromium');
-const moment = require('moment');
+import puppeteerExtra from 'puppeteer-extra';
+import stealthPlugin from 'puppeteer-extra-plugin-stealth';
+import chromium from '@sparticuz/chromium';
 
+import moment from 'moment';
+
+dotenv.config();
 
 const apiV1 = axios.create({ baseURL: process.env.BASE_URL_API_V1 })
 
@@ -153,7 +156,8 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
 
     result.generalRating = generalRating;
     result.totalNewReviews = totalNewReviews;
-    result.reviews = reviews;
+    result.totalReviews = totalReviews;
+    result.reviews = reviews.reverse();
   }
 
   const pages = await browser.pages();
@@ -170,43 +174,55 @@ async function getGoggleReviewBusiness(businessURL, currentTotalReviewsInDatabas
   return result;
 };
 
-module.exports.dispatch =async (event) => {
+export async function dispatch(event) {
   try {
-    const body = JSON.stringify(event.body);
-    const { id  } = JSON.parse(body);
+    const businessScrapingData = [];
 
-    const response = await apiV1.get(`business/${id}/`);
-    const { url, general_rating: generalRating, total_reviews: totalReviews, ...rest } = response.data
+    for (const record of event.Records){
+        let id;
 
-    const data = await getGoggleReviewBusiness(url, 630)
-    
-    if(Object.keys(data).length > 0){
-      if(generalRating !== data.generalRating){
-        await updateBusiness(id, {
-          "general_rating": data.generalRating,
-          "total_reviews": data.totalReviews
-        })
-      } else{
-        await updateBusiness(id, {
-          "total_reviews": data.totalReviews
-        })
-      }
+        try {
+          id = Number(record.body);
+        } catch (error) {
+          throw new Error(error)
+        }
 
-      Promise.all(data.reviews.map(review => {
-        return createReviews(id, {
-          "business": id,
-          "profile_picture": review.reviewerProfilePicture,
-          "name": review.reviewerName,
-          "rating": Number(review.rating),
-          "approximateDate": review.approximateDate,
-          "description": review.description
-        })
-      }))
+        const response = await apiV1.get(`business/${id}/`);
+        const { url, general_rating: generalRating, total_reviews: totalReviews, reviews, ...rest } = response.data;
+
+        const data = await getGoggleReviewBusiness(url, reviews.length);
+
+        businessScrapingData.push(data);
+        
+
+        if(Object.keys(data).length > 0){
+          if(generalRating !== data.generalRating){
+            await updateBusiness(id, {
+              "general_rating": data.generalRating,
+              "total_reviews": data.totalReviews
+            })
+          } else{
+            await updateBusiness(id, {
+              "total_reviews": data.totalReviews
+            })
+          }
+
+          await Promise.all(data.reviews.map(async review => {
+            return await createReviews(id, {
+              "business": id,
+              "profile_picture": review.reviewerProfilePicture,
+              "name": review.reviewerName,
+              "rating": Number(review.rating),
+              "approximateDate": review.approximateDate,
+              "description": review.description
+            })
+          }))
+        }
     }
 
     return {
       statusCode: 200,
-      data,
+      businessScrapingData,
     };
   } catch (error) {
     return {
@@ -216,6 +232,4 @@ module.exports.dispatch =async (event) => {
       })
     }
   }
-
-  
 }
