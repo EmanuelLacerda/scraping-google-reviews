@@ -188,9 +188,9 @@ export async function dispatch(event) {
         }
 
         const response = await apiV1.get(`business/${id}/`);
-        const { url, general_rating: generalRating, total_reviews: totalReviews, ...rest } = response.data;
+        const { url, general_rating: generalRating, total_reviews: totalReviews, reviews, ...rest } = response.data;
 
-        const data = await getGoggleReviewBusiness(url, totalReviews);
+        const data = await getGoggleReviewBusiness(url, reviews.length);
 
         businessScrapingData.push(data);
         
