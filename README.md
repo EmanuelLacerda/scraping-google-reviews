@@ -1,7 +1,11 @@
 <h1 align="center" style="font-weight: bold;">Scraping Google Reviews 💻</h1>
+<p align="center">
+ <a href="#tech">Tecnologias usadas</a> • 
+ <a href="#intro">Introdução</a>
+</p>
 
 
-<h2>📦 Tecnologias usadas:</h2>
+<h2 id="tech">📦 Tecnologias usadas:</h2>
 
 - [Django](https://www.djangoproject.com/)
 - [Django REST Framework](https://www.django-rest-framework.org/)
@@ -13,7 +17,7 @@
   - [AWS SQS](https://docs.aws.amazon.com/sqs/)
   - [AWS RDS](https://docs.aws.amazon.com/rds/)
 
-<h2>🔥 Introdução:</h2>
+<h2 id"intro">🔥 Introdução:</h2>
 
 <h3>⚙️ Pré-requisitos:</h3>
 
@@ -27,3 +31,6 @@ Você precisa ter instalado na sua máquina as seguintes tecnologias nas exatas 
 <h3>🔨 Guia de instalação:</h3>
 
 Para instalar este projeto, acesse [este link](https://github.com/EmanuelLacerda/scraping-google-reviews/blob/main/installation-guide.md) ou acesse o arquivo "installation-guide.md" presente na raiz deste repositório.
+
+Após instalar o projeto, você não precisa executa ele, pois ele funciona de maneira automática. Você apenas precisa adicionar os business que devem passar pelo scraping. Vejo o tópico "API Endpoints" para saber qual endpoint utilizar para fazer esta adição.
+
