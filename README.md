@@ -1,7 +1,8 @@
 <h1 align="center" style="font-weight: bold;">Scraping Google Reviews 💻</h1>
 <p align="center">
  <a href="#tech">Tecnologias usadas</a> • 
- <a href="#intro">Introdução</a>
+ <a href="#intro">Introdução</a> • 
+ <a href="#projec-actors">Autores</a>
 </p>
 <p align="center">
     <b>Um projeto que faz scraping do Google Reviews automaticamente com serviços AWS.</b>
@@ -36,4 +37,9 @@ Você precisa ter instalado na sua máquina as seguintes tecnologias nas exatas 
 Para instalar este projeto, acesse [este link](https://github.com/EmanuelLacerda/scraping-google-reviews/blob/main/installation-guide.md) ou acesse o arquivo "installation-guide.md" presente na raiz deste repositório.
 
 Após instalar o projeto, você não precisa executa ele, pois ele funciona de maneira automática. Você apenas precisa adicionar os business que devem passar pelo scraping. Vejo o tópico "API Endpoints" para saber qual endpoint utilizar para fazer esta adição.
+
+<h2 id="projec-actors">👷 Autores</h2>
+
+* Emanuel Lacerda - Desenvolvedor - [@EmanuelLacerda](https://github.com/EmanuelLacerda/)
+* Matheus Juvelino - Consultor - [@matheusjuvelino-neon](https://github.com/matheusjuvelino-neon)
 
