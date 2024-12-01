@@ -1,5 +1,11 @@
 <h1 align="center" style="font-weight: bold;">Scraping Google Reviews 💻</h1>
 <p align="center">
+  <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white"></img>
+  <img src="https://img.shields.io/badge/Puppeteer-white.svg?style=for-the-badge&logo=Puppeteer&logoColor=black"></img>
+  <img src="https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray"></img>
+  <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white"></img>
+</p>
+<p align="center">
  <a href="#tech">Tecnologias usadas</a> • 
  <a href="#intro">Introdução</a> • 
  <a href="#projec-actors">Autores</a>
