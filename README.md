@@ -6,9 +6,10 @@
   <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white"></img>
 </p>
 <p align="center">
- <a href="#tech">Tecnologias usadas</a> • 
- <a href="#intro">Introdução</a> • 
- <a href="#projec-actors">Autores</a>
+  <a href="#tech">Tecnologias usadas</a> • 
+  <a href="#intro">Introdução</a> •
+  <a href="#api-endpoints">API Endpoints</a> •
+  <a href="#projec-actors">Autores</a>
 </p>
 <p align="center">
     <b>Um projeto que faz scraping do Google Reviews automaticamente com serviços AWS.</b>
@@ -43,6 +44,8 @@ Você precisa ter instalado na sua máquina as seguintes tecnologias nas exatas 
 Para instalar este projeto, acesse [este link](https://github.com/EmanuelLacerda/scraping-google-reviews/blob/main/installation-guide.md) ou acesse o arquivo "installation-guide.md" presente na raiz deste repositório.
 
 Após instalar o projeto, você não precisa executa ele, pois ele funciona de maneira automática. Você apenas precisa adicionar os business que devem passar pelo scraping. Vejo o tópico "API Endpoints" para saber qual endpoint utilizar para fazer esta adição.
+
+<h2 id="api-endpoints">⚙️ API Endpoints</h2>
 
 <h2 id="projec-actors">👷 Autores</h2>
 
