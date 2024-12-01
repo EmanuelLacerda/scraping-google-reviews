@@ -149,6 +149,39 @@ serverless deploy
 
 **5° Copie na variável "SQS_QUEUE_URL" em scheduler/.env a url da fila FIFO criada no deploy:**
 
+<h4>Passo 04: Faça o deploy da Lambda Function "Scraper"</h4>
+
+**1° Crie o scraper/.env a partir do scraper/.env.examples:**
+
+Ao acessar scraper/.env.examples você verá o seguinte conteúdo:
+```
+BASE_URL_API_V1=
+SQS_ARN=
+```
+
+Em "SQS_ARN", você deve colocar o ARN da fila FIFO do AWS SQS para qual serão enviados o id dos business que devem passar pelo scraping. Além disto, você deve colocar em "BASE_URL_API_V1" a URL da API da Lambda Server adicionando "/api/v1/" no final dela. Portanto, o valor de "BASE_URL_API_V1" deve ser algo como "https://lo8963hdj.execute-api.us-east-1.amazonaws.com/stg/api/v1/".
+
+**2° Acesse o diretório "scraper":**
+
+```bash
+cd scraper
+```
+
+**3° Se necessário, altere o timeout da lambda function Scheduler:**
+
+Esta lambda function tem um timeout de 5 minutos. Caso você precise que o timeout seja diferente, ajuste isto antes de fazer o deploy.
+
+
+**4° Faça o deploy para a AWS:**
+
+
+```bash
+serverless deploy
+```
+
+
+
+
 
 
 
