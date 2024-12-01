@@ -4,7 +4,7 @@
  <a href="#intro">Introdução</a>
 </p>
 <p align="center">
-    <b>Um projeto faz scraping do Google Reviews automaticamente com serviços AWS.</b>
+    <b>Um projeto que faz scraping do Google Reviews automaticamente com serviços AWS.</b>
 </p>
 
 
