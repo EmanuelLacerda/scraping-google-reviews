@@ -96,7 +96,7 @@ serverless deploy
 serverless wsgi manage --command "collectstatic --noinput"
 ```
 
-**5° Copiar na variável "DB_HOST" em server/.env a url do host da Instância do PostgreSQL criada no deploy:**
+**5° Copie na variável "DB_HOST" em server/.env a url do host da Instância do PostgreSQL criada no deploy:**
 
 **6° Faça o deploy para a AWS:**
 
@@ -115,6 +115,47 @@ serverless  wsgi manage --command "migrate"
 ```bash
 cd ..
 ```
+
+<h4>Passo 04: Faça o deploy da Lambda Function "Scheduler"</h4>
+
+**1° Crie o scheduler/.env a partir do scheduler/.env.examples:**
+
+Ao acessar scheduler/.env.examples você verá o seguinte conteúdo:
+```
+BASE_URL_API_V1=
+SQS_QUEUE_URL=
+SQS_NAME=
+```
+
+Em "SQS_NAME", você deve colocar o nome da fila FIFO do AWS SQS para qual serão enviados o id dos business que devem passar pelo scraping. Além disto, você deve colocar em "BASE_URL_API_V1" a URL da API da Lambda Server adicionando "/api/v1/" no final dela. Portanto, o valor de "BASE_URL_API_V1" deve ser algo como "https://lo8963hdj.execute-api.us-east-1.amazonaws.com/stg/api/v1/".
+
+**2° Acesse o diretório "scheduler":**
+
+```bash
+cd scheduler
+```
+
+**3° Se necessário, altere a periodicidade da execução da lambda function Scheduler:**
+
+Esta lambda function é acionada a cada 10 minutos. Caso você precise que o acionamento dela ocorra em uma periodicidade diferente, ajuste isto antes de fazer o deploy.
+
+
+**4° Faça o deploy para a AWS:**
+
+
+```bash
+serverless deploy
+```
+
+**5° Copie na variável "SQS_QUEUE_URL" em scheduler/.env a url da fila FIFO criada no deploy:**
+
+
+
+
+
+
+
+
 
 
 
