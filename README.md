@@ -9,7 +9,9 @@
   <a href="#tech">Tecnologias usadas</a> • 
   <a href="#intro">Introdução</a> •
   <a href="#api-endpoints">API Endpoints</a> •
-  <a href="#projec-actors">Autores</a>
+  <a href="#projec-actors">Autores</a> •
+  <a href="#licenca">Licença</a>
+  <a href="#contact">Contato</a>
 </p>
 <p align="center">
     <b>Um projeto que faz scraping do Google Reviews automaticamente com serviços AWS.</b>
@@ -357,3 +359,11 @@ A API provém os seguintes endpoints:
 * Emanuel Lacerda - Desenvolvedor - [@EmanuelLacerda](https://github.com/EmanuelLacerda/)
 * Matheus Juvelino - Consultor - [@matheusjuvelino-neon](https://github.com/matheusjuvelino-neon)
 
+<h2 id="licenca">📄 Licença</h2>
+Esse projeto está sob a licença MIT - acesse os detalhes <a href="https://github.com/EmanuelLacerda/scraping-google-reviews/blob/main/LICENSE">LICENSE.md</a>.
+
+<h2 id="contact">✉️ Contato</h2>
+Se tiver alguma dúvida, quiser fazer sugestões, elogios, etc., se sinta livre para entrar em contato comigo por meio de um dos contatos abaixo:
+
+- [in/emanuel-de-souza-lacerda](https://www.linkedin.com/in/emanuel-de-souza-lacerda/)
+- emanuelsouzalacerda@gmail.com
