@@ -56,6 +56,8 @@ A API provém os seguintes endpoints:
 | <kbd>POST /business</kbd>     | Registra um novo business [Ver detalhes](#post-business)
 | <kbd>GET /business/{businessId}/reviews/</kbd>     | Pega todas as avaliações de um business específico por ID. [Ver detalhes](#get-business-all-reviews)
 | <kbd>GET /business/{businessId}/reviews/?review_id={reviewId}</kbd>     | Pega uma avalição específica por ID de um business específico por ID. [Ver detalhes](#get-business-review)
+| <kbd>GET /reviews</kbd>     | Pega a lista de todos as avaliações. [Ver detalhes](#get-all-reviews)
+| <kbd>GET /reviews/{reviewId}/</kbd>     | Pega uma avaliação específica por ID. [Ver detalhes](#get-specific-review)
 
 
 <h3 id="get-all-business">GET /business</h3>
@@ -249,9 +251,106 @@ A API provém os seguintes endpoints:
 }
 ```
 
+<h3 id="get-all-reviews">GET /reviews</h3>
+
+<h4>RESPONSE:</h4>
+
+```
+[
+  {
+    "id": 1,
+    "created_at": "2024-12-01T23:59:54.000Z",
+    "update_at": "2024-12-01T23:59:54.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Carlos Silva",
+    "rating": "4.50",
+    "approximateDate": "2024-11-20T12:45:00.000Z",
+    "description": "Lugar maravilhoso! O Empório do Mate tem uma atmosfera acolhedora, com um atendimento excepcional. O mate com guaraná é simplesmente perfeito, recomendo muito!",
+    "business": 1
+  },
+  {
+    "id": 2,
+    "created_at": "2024-12-01T23:59:54.000Z",
+    "update_at": "2024-12-01T23:59:54.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Fernanda Oliveira",
+    "rating": "3.75",
+    "approximateDate": "2024-11-15T09:30:00.000Z",
+    "description": "O Empório do Mate tem boas opções, mas achei o mate um pouco doce demais. No geral, vale a pena pela experiência e pelo ambiente aconchegante.",
+    "business": 1
+  },
+  {
+    "id": 3,
+    "created_at": "2024-12-01T23:59:54.000Z",
+    "update_at": "2024-12-01T23:59:54.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Mariana Costa",
+    "rating": "5.00",
+    "approximateDate": "2024-11-10T18:20:00.000Z",
+    "description": "Simplesmente incrível! O Empório do Mate superou minhas expectativas. O pão de queijo acompanhado do mate foi a combinação perfeita. Voltarei com certeza!",
+    "business": 1
+  },
+{
+    "id": 4,
+    "created_at": "2024-12-01T22:00:00.000Z",
+    "update_at": "2024-12-01T22:00:00.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "João Silva",
+    "rating": "4.75",
+    "approximateDate": "2024-11-15T15:30:00.000Z",
+    "description": "A comida da Feira Nordestina da Ana é simplesmente deliciosa! O tempero é incrível e me lembrou muito da culinária caseira do nordeste. Recomendo o baião de dois e o bolo de rolo. O atendimento foi impecável, e o ambiente acolhedor me fez sentir em casa.",
+    "business": 2
+  },
+  {
+    "id": 5,
+    "created_at": "2024-12-01T22:15:00.000Z",
+    "update_at": "2024-12-01T22:15:00.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Mariana Oliveira",
+    "rating": "4.50",
+    "approximateDate": "2024-11-20T14:00:00.000Z",
+    "description": "Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!",
+    "business": 2
+  },
+  {
+    "id": 6,
+    "created_at": "2024-12-01T22:30:00.000Z",
+    "update_at": "2024-12-01T22:30:00.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Carlos Mendes",
+    "rating": "5.00",
+    "approximateDate": "2024-11-25T18:45:00.000Z",
+    "description": "Que lugar maravilhoso! A Feira Nordestina da Ana tem um cardápio autêntico e cheio de sabores inesquecíveis. Experimentei o cuscuz com carne seca e foi simplesmente divino. Além disso, a equipe é super simpática. Voltarei com certeza!",
+    "business": 2
+  }
+]
+```
 
 
+<h3 id="get-specific-review">GET /review/1/</h3>
 
+<h4>RESPONSE:</h4>
+
+```
+{
+  "id": 1,
+  "created_at": "2024-12-01T23:59:54.000Z",
+  "update_at": "2024-12-01T23:59:54.000Z",
+  "active": true,
+  "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+  "name": "Carlos Silva",
+  "rating": "4.50",
+  "approximateDate": "2024-11-20T12:45:00.000Z",
+  "description": "Lugar maravilhoso! O Empório do Mate tem uma atmosfera acolhedora, com um atendimento excepcional. O mate com guaraná é simplesmente perfeito, recomendo muito!",
+  "business": 1
+}
+```
 
 <h2 id="projec-actors">👷 Autores</h2>
 
