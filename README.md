@@ -52,7 +52,7 @@ A API provém os seguintes endpoints:
 | rota               | descrição                                          
 |----------------------|-----------------------------------------------------
 | <kbd>GET /business</kbd>     | Pega a lista de todos os business. [Ver detalhes](#get-all-business)
-| <kbd>GET /business/{businessId}/</kbd>     | Pega um business específico por ID. [Ver detalhes](#get-business)
+| <kbd>GET /business/{businessId}/</kbd>     | Pega um business específico por ID. [Ver detalhes](#get-specific-business)
 | <kbd>POST /business</kbd>     | Registra um novo business [Ver detalhes](#post-business)
 | <kbd>GET /business/{businessId}/reviews/</kbd>     | Pega todas as avaliações de um business específico por ID. [Ver detalhes](#get-business-all-reviews)
 | <kbd>GET /business/{businessId}/reviews/?review_id={reviewId}</kbd>     | Pega uma avalição específica por ID de um business específico por ID. [Ver detalhes](#get-business-review)
@@ -111,7 +111,7 @@ A API provém os seguintes endpoints:
 ]
 ```
 
-<h3 id="get-business">GET /business/1/</h3>
+<h3 id="get-specific-business">GET /business/1/</h3>
 
 <h4>RESPONSE:</h4>
 
