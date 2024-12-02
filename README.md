@@ -56,11 +56,17 @@ A API provém os seguintes endpoints:
 | <kbd>GET /business</kbd>     | Pega a lista de todos os business. [Ver detalhes](#get-all-business)
 | <kbd>GET /business/{businessId}/</kbd>     | Pega um business específico por ID. [Ver detalhes](#get-specific-business)
 | <kbd>POST /business</kbd>     | Registra um novo business [Ver detalhes](#post-business)
+| <kbd>PUT /business/{businessId}/</kbd>     | Edita os dados de um business específico por ID
+| <kbd>PATCH /business/{businessId}/</kbd>     | Edita os dados de um business específico por ID
+| <kbd>DELETE /business/{businessId}/</kbd>     | Remove um business específico por ID
 | <kbd>GET /business/{businessId}/reviews/</kbd>     | Pega todas as avaliações de um business específico por ID. [Ver detalhes](#get-business-all-reviews)
 | <kbd>GET /business/{businessId}/reviews/?review_id={reviewId}</kbd>     | Pega uma avalição específica por ID de um business específico por ID. [Ver detalhes](#get-business-review)
 | <kbd>GET /reviews</kbd>     | Pega a lista de todos as avaliações. [Ver detalhes](#get-all-reviews)
 | <kbd>GET /reviews/{reviewId}/</kbd>     | Pega uma avaliação específica por ID. [Ver detalhes](#get-specific-review)
 | <kbd>POST /reviews</kbd>     | Registra uma nova avaliação [Ver detalhes](#post-review)
+| <kbd>PUT /reviews/{businessId}/</kbd>     | Edita os dados de uma avaliação específica por ID
+| <kbd>PATCH /reviews/{businessId}/</kbd>     | Edita os dados de uma avaliação específica por ID
+| <kbd>DELETE /reviews/{businessId}/</kbd>     | Remove uma avaliação específica por ID
 
 
 <h3 id="get-all-business">GET /business</h3>
