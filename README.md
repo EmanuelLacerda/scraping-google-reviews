@@ -45,7 +45,7 @@ Você precisa ter instalado na sua máquina as seguintes tecnologias nas exatas 
 
 Para instalar este projeto, acesse [este link](https://github.com/EmanuelLacerda/scraping-google-reviews/blob/main/installation-guide.md) ou acesse o arquivo "installation-guide.md" presente na raiz deste repositório.
 
-Após instalar o projeto, você não precisa executa ele, pois ele funciona de maneira automática. Você apenas precisa adicionar os business que devem passar pelo scraping. Vejo o tópico "API Endpoints" para saber qual endpoint utilizar para fazer esta adição.
+Após instalar o projeto, você não precisa executa ele, pois ele funciona de maneira automática. Você apenas precisa adicionar os business que devem passar pelo scraping. Vejo o tópico <a href="#api-endpoints">API Endpoints</a> para saber qual endpoint utilizar para fazer esta adição.
 
 <h2 id="api-endpoints">⚙️ API Endpoints</h2>
 
@@ -60,6 +60,7 @@ A API provém os seguintes endpoints:
 | <kbd>GET /business/{businessId}/reviews/?review_id={reviewId}</kbd>     | Pega uma avalição específica por ID de um business específico por ID. [Ver detalhes](#get-business-review)
 | <kbd>GET /reviews</kbd>     | Pega a lista de todos as avaliações. [Ver detalhes](#get-all-reviews)
 | <kbd>GET /reviews/{reviewId}/</kbd>     | Pega uma avaliação específica por ID. [Ver detalhes](#get-specific-review)
+| <kbd>POST /reviews</kbd>     | Registra uma nova avaliação [Ver detalhes](#post-review)
 
 
 <h3 id="get-all-business">GET /business</h3>
@@ -353,6 +354,41 @@ A API provém os seguintes endpoints:
   "business": 1
 }
 ```
+
+<h3 id="post-review">POST /reviews</h3>
+
+<h4>REQUEST:</h4>
+
+```
+{
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a/ACg8ocKiR7Rgzs8vTA5Dpv5GCqZ_ixYkfRzxd-F-Pr548-3YpdFyug=w36-h36-p-rp-mo-br100",
+    "name": "Maria da Silva",
+    "rating": "4.35",
+    "approximateDate": "2024-11-13T10:12:54.329000Z",
+    "description": "Excelente comida e serviço!",
+    "business": 2
+}
+```
+
+<h4>RESPONSE:</h4>
+
+```
+{
+    "id": 7,
+    "created_at": "2024-12-02T12:59:46.624340Z",
+    "update_at": "2024-12-02T12:59:46.624367Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a/ACg8ocKiR7Rgzs8vTA5Dpv5GCqZ_ixYkfRzxd-F-Pr548-3YpdFyug=w36-h36-p-rp-mo-br100",
+    "name": "Maria da Silva",
+    "rating": "4.35",
+    "approximateDate": "2024-11-13T10:12:54.329000Z",
+    "description": "Excelente comida e serviço!",
+    "business": 2
+}
+```
+
+
 
 <h2 id="projec-actors">👷 Autores</h2>
 
