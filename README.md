@@ -10,7 +10,7 @@
   <a href="#intro">Introdução</a> •
   <a href="#api-endpoints">API Endpoints</a> •
   <a href="#projec-actors">Autores</a> •
-  <a href="#licenca">Licença</a>
+  <a href="#licenca">Licença</a> •
   <a href="#contact">Contato</a>
 </p>
 <p align="center">
