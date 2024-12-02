@@ -54,6 +54,8 @@ A API provém os seguintes endpoints:
 | <kbd>GET /business</kbd>     | Pega a lista de todos os business. [Ver detalhes](#get-all-business)
 | <kbd>GET /business/{businessId}/</kbd>     | Pega um business específico por ID. [Ver detalhes](#get-business)
 | <kbd>POST /business</kbd>     | Registra um novo business [Ver detalhes](#post-business)
+| <kbd>GET /business/{businessId}/reviews/</kbd>     | Pega todas as avaliações de um business específico por ID. [Ver detalhes](#get-business-all-reviews)
+| <kbd>GET /business/{businessId}/reviews/?review_id={reviewId}</kbd>     | Pega uma avalição específica por ID de um business específico por ID. [Ver detalhes](#get-business-review)
 
 
 <h3 id="get-all-business">GET /business</h3>
@@ -78,7 +80,11 @@ A API provém os seguintes endpoints:
     "total_reviews": 214,
     "created_at": "2024-11-28T10:15:32.123456Z",
     "active": true,
-    "reviews": []
+    "reviews": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 2,
@@ -96,7 +102,11 @@ A API provém os seguintes endpoints:
     "total_reviews": 987,
     "created_at": "2024-11-29 14:22:01.789012Z",
     "active": true,
-    "reviews": []
+    "reviews": [
+      4,
+      5,
+      6
+    ]
   }
 ]
 ```
@@ -122,7 +132,11 @@ A API provém os seguintes endpoints:
   "total_reviews": 214,
   "created_at": "2024-11-28T10:15:32.123456Z",
   "active": true,
-  "reviews": []
+  "reviews": [[
+      1,
+      2,
+      3
+  ]
 }
 ```
 
@@ -170,6 +184,73 @@ A API provém os seguintes endpoints:
     "reviews": []
 }
 ```
+
+<h3 id="get-business-all-reviews">GET /business/2/reviews/</h3>
+
+<h4>RESPONSE:</h4>
+
+```
+[
+  {
+    "id": 4,
+    "created_at": "2024-12-01T22:00:00.000Z",
+    "update_at": "2024-12-01T22:00:00.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "João Silva",
+    "rating": "4.75",
+    "approximateDate": "2024-11-15T15:30:00.000Z",
+    "description": "A comida da Feira Nordestina da Ana é simplesmente deliciosa! O tempero é incrível e me lembrou muito da culinária caseira do nordeste. Recomendo o baião de dois e o bolo de rolo. O atendimento foi impecável, e o ambiente acolhedor me fez sentir em casa.",
+    "business": 2
+  },
+  {
+    "id": 5,
+    "created_at": "2024-12-01T22:15:00.000Z",
+    "update_at": "2024-12-01T22:15:00.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Mariana Oliveira",
+    "rating": "4.50",
+    "approximateDate": "2024-11-20T14:00:00.000Z",
+    "description": "Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!",
+    "business": 2
+  },
+  {
+    "id": 6,
+    "created_at": "2024-12-01T22:30:00.000Z",
+    "update_at": "2024-12-01T22:30:00.000Z",
+    "active": true,
+    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+    "name": "Carlos Mendes",
+    "rating": "5.00",
+    "approximateDate": "2024-11-25T18:45:00.000Z",
+    "description": "Que lugar maravilhoso! A Feira Nordestina da Ana tem um cardápio autêntico e cheio de sabores inesquecíveis. Experimentei o cuscuz com carne seca e foi simplesmente divino. Além disso, a equipe é super simpática. Voltarei com certeza!",
+    "business": 2
+  }
+]
+```
+
+<h3 id="get-business-review">GET /business/2/reviews/?review_id=5</h3>
+
+<h4>RESPONSE:</h4>
+
+```
+ {
+  "id": 5,
+  "created_at": "2024-12-01T22:15:00.000Z",
+  "update_at": "2024-12-01T22:15:00.000Z",
+  "active": true,
+  "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
+  "name": "Mariana Oliveira",
+  "rating": "4.50",
+  "approximateDate": "2024-11-20T14:00:00.000Z",
+  "description": "Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!",
+  "business": 2
+}
+```
+
+
+
 
 
 <h2 id="projec-actors">👷 Autores</h2>
