@@ -14,7 +14,7 @@
   <a href="#contact">Contato</a>
 </p>
 <p align="center">
-    <b>Um projeto que faz scraping do Google Reviews automaticamente com serviços AWS.</b>
+    <b>Um projeto que faz de maneira automática e periódica o scraping do Google Reviews utilizando serviços AWS.</b>
 </p>
 
 
