@@ -207,8 +207,8 @@ export async function dispatch(event) {
             })
           }
 
-          await Promise.all(data.reviews.map(async review => {
-            return await createReviews(id, {
+          for(const review of data.reviews){
+            await createReviews(id, {
               "business": id,
               "profile_picture": review.reviewerProfilePicture,
               "name": review.reviewerName,
@@ -216,7 +216,7 @@ export async function dispatch(event) {
               "approximateDate": review.approximateDate,
               "description": review.description
             })
-          }))
+          }
         }
     }
 
