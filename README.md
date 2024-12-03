@@ -161,15 +161,11 @@ A API provém os seguintes endpoints:
   "zipcode": "58780-000",
   "address": "Rua Dede do Cantinho",
   "number": 123,
-  "complement": "",
   "area": "Centro",
-  "state": "Paraíba",
   "city": "Itaporanga",
+  "state": "Paraíba",
   "phone_number": "(83) 3531-2287",
-  "url": "https://www.google.com/maps/place/Mercadinho+da+Amizade,+Rua+Dede+do+Cantinho+123,+Centro,+Itaporanga,+Para%C3%ADba/@-7.319422,-37.455178,17z/data=!4m8!1m2!2m1!1sMercadinho+da+Amizade!3m1!1s0x0:0x0!5m2!1s2024-12-01T11:46:49.244Z!2sMercadinho%20da%20Amizade",
-  "general_rating": 4.3,
-  "total_reviews": 130,
-  "active": true
+  "url": "https://www.google.com/maps/place/Mercadinho+da+Amizade,+Rua+Dede+do+Cantinho+123,+Centro,+Itaporanga,+Para%C3%ADba/@-7.319422,-37.455178,17z/data=!4m8!1m2!2m1!1sMercadinho+da+Amizade!3m1!1s0x0:0x0!5m2!1s2024-12-01T11:46:49.244Z!2sMercadinho%20da%20Amizade"
 }
 ```
 
@@ -177,22 +173,22 @@ A API provém os seguintes endpoints:
 
 ```
 {
-    "id": 3
-    "name": "Mercadinho da Amizade",
-    "zipcode": "58780-000",
-    "address": "Rua Dede do Cantinho",
-    "number": 123,
-    "complement": "",
-    "area": "Centro",
-    "state": "Paraíba",
-    "city": "Itaporanga",
-    "phone_number": "(83) 3531-2287",
-    "url": "https://www.google.com/maps/place/Mercadinho+da+Amizade,+Rua+Dede+do+Cantinho+123,+Centro,+Itaporanga,+Para%C3%ADba/@-7.319422,-37.455178,17z/data=!4m8!1m2!2m1!1sMercadinho+da+Amizade!3m1!1s0x0:0x0!5m2!1s2024-12-01T11:46:49.244Z!2sMercadinho%20da%20Amizade",
-    "general_rating": "4.30",
-    "total_reviews": 130,
-    "created_at": "2024-12-01T14:41:22.411102Z",
-    "active": true,
-    "reviews": []
+    id: 3
+    name": 'Mercadinho da Amizade',
+    zipcode: '58780-000',
+    address: 'Rua Dede do Cantinho',
+    number: 123,
+    complement: '',
+    area: 'Centro',
+    state: 'Paraíba",
+    city: 'Itaporanga",
+    phone_number: '(83) 3531-2287',
+    url: 'https://www.google.com/maps/place/Mercadinho+da+Amizade,+Rua+Dede+do+Cantinho+123,+Centro,+Itaporanga,+Para%C3%ADba/@-7.319422,-37.455178,17z/data=!4m8!1m2!2m1!1sMercadinho+da+Amizade!3m1!1s0x0:0x0!5m2!1s2024-12-01T11:46:49.244Z!2sMercadinho%20da%20Amizade',
+    general_rating: '0.00',
+    total_reviews: 0,
+    created_at: '2024-12-01T14:41:22.411102Z',
+    active: true,
+    reviews: []
 }
 ```
 
