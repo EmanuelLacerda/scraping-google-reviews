@@ -88,7 +88,7 @@ A API provém os seguintes endpoints:
     "phone_number": "(11) 3031-9876",
     "url": "https://www.google.com/maps/place/Emp%C3%B3rio+do+Mate/@-23.5609121,-46.6533211,17z/data=!3m1!4b1!4m5!3m4!1s0x9de4ce02c10f2b:0x8f3b22c88e9878c8!8m2!3d-23.5610032!4d-46.6532302",
     "general_rating": "4.7",
-    "total_reviews": 214,
+    "total_reviews": 3,
     "created_at": "2024-11-28T10:15:32.123456Z",
     "active": true,
     "reviews": [
@@ -105,12 +105,12 @@ A API provém os seguintes endpoints:
     "number": 1500,
     "complement": "Loja 20",
     "area": "Centro",
-    "state": "Recife",
-    "city": "Pernambuco",
+    "state": "Pernambuco",
+    "city": "Recife",
     "phone_number": "(81) 3224-1122",
     "url": "https://www.google.com/maps/place/Feira+Nordestina+da+Ana/@-8.0580121,-34.8812345,17z/data=!3m1!4b1!4m5!3m4!1s0x7acc59cbef02c40f:0x2f4b2f3d2f1d2f9e!8m2!3d-8.0580632!4d-34.8811436",
     "general_rating": "4.8",
-    "total_reviews": 987,
+    "total_reviews": 3,
     "created_at": "2024-11-29 14:22:01.789012Z",
     "active": true,
     "reviews": [
@@ -140,7 +140,7 @@ A API provém os seguintes endpoints:
   "phone_number": "(11) 3031-9876",
   "url": "https://www.google.com/maps/place/Emp%C3%B3rio+do+Mate/@-23.5609121,-46.6533211,17z/data=!3m1!4b1!4m5!3m4!1s0x9de4ce02c10f2b:0x8f3b22c88e9878c8!8m2!3d-23.5610032!4d-46.6532302",
   "general_rating": "4.7",
-  "total_reviews": 214,
+  "total_reviews": 3,
   "created_at": "2024-11-28T10:15:32.123456Z",
   "active": true,
   "reviews": [[
