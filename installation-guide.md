@@ -43,13 +43,14 @@ Ao acessar server/.env.examples você verá o seguinte conteúdo:
 STATIC_FILES_BUCKET_NAME=
 AWS_REGION_NAME=us-east-1
 DB_NAME=
-DB_USER=postgres
+DB_USER="postgres"
 DB_PASSWORD=
 DB_HOST=
 DB_PORT=5432
+SECRET_KEY=
 ```
 
-Em "STATIC_FILES_BUCKET_NAME", você deve colocar o nome do bucket do AWS S3 em que ficará os static files desta Lambda Function. Exceto por "DB_HOST", no restante das variáveis de ambiente que não tem valor, coloque as informações da Instância PostgreSQL do AWS RDS que utilizada pelo servidor.
+Em "STATIC_FILES_BUCKET_NAME", você deve colocar o nome do bucket do AWS S3 em que ficará os static files desta Lambda Function. Em "SECRET_KEY", coloque a SECRET_KEY que você tiver gerado para a aplicação Django. Exceto por "DB_HOST", no restante das variáveis de ambiente que não tem valor, coloque as informações da Instância PostgreSQL do AWS RDS que utilizada pelo servidor.
 
 **2° Acesse o diretório "server":**
 
