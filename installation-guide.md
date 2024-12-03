@@ -155,15 +155,12 @@ Esta lambda function tem um timeout de 5 minutos. Caso você precise que o timeo
 
 
 **4° Faça o deploy para a AWS:**
+```bash
+serverless deploy
+```
 
 **5° Saia do diretório "scraper":**
 
 ```bash
 cd ..
-```
-
-
-
-```bash
-serverless deploy
 ```
