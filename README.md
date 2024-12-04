@@ -87,11 +87,11 @@ A API provém os seguintes endpoints:
     city: 'São Paulo',
     phone_number: '(11) 3031-9876',
     url: 'https://www.google.com/maps/place/Emp%C3%B3rio+do+Mate/@-23.5609121,-46.6533211,17z/data=!3m1!4b1!4m5!3m4!1s0x9de4ce02c10f2b:0x8f3b22c88e9878c8!8m2!3d-23.5610032!4d-46.6532302',
-    "general_rating": '4.7',
-    "total_reviews": 3,
-    "created_at": '2024-11-28T10:15:32.123456Z',
-    "active": true,
-    "reviews": [
+    general_rating: '4.7',
+    total_reviews: 3,
+    created_at: '2024-11-28T10:15:32.123456Z',
+    active: true,
+    reviews: [
       1,
       2,
       3
@@ -157,15 +157,15 @@ A API provém os seguintes endpoints:
 
 ```
 {
-  "name": "Mercadinho da Amizade",
-  "zipcode": "58780-000",
-  "address": "Rua Dede do Cantinho",
-  "number": 123,
-  "area": "Centro",
-  "city": "Itaporanga",
-  "state": "Paraíba",
-  "phone_number": "(83) 3531-2287",
-  "url": "https://www.google.com/maps/place/Mercadinho+da+Amizade,+Rua+Dede+do+Cantinho+123,+Centro,+Itaporanga,+Para%C3%ADba/@-7.319422,-37.455178,17z/data=!4m8!1m2!2m1!1sMercadinho+da+Amizade!3m1!1s0x0:0x0!5m2!1s2024-12-01T11:46:49.244Z!2sMercadinho%20da%20Amizade"
+  name: 'Mercadinho da Amizade',
+  zipcode: '58780-000',
+  address: 'Rua Dede do Cantinho',
+  number: 123,
+  area: 'Centro',
+  city: 'Itaporanga',
+  state 'Paraíba',
+  phone_number: '(83) 3531-2287',
+  url: 'https://www.google.com/maps/place/Mercadinho+da+Amizade,+Rua+Dede+do+Cantinho+123,+Centro,+Itaporanga,+Para%C3%ADba/@-7.319422,-37.455178,17z/data=!4m8!1m2!2m1!1sMercadinho+da+Amizade!3m1!1s0x0:0x0!5m2!1s2024-12-01T11:46:49.244Z!2sMercadinho%20da%20Amizade'
 }
 ```
 
@@ -174,7 +174,7 @@ A API provém os seguintes endpoints:
 ```
 {
     id: 3
-    name": 'Mercadinho da Amizade',
+    name: 'Mercadinho da Amizade',
     zipcode: '58780-000',
     address: 'Rua Dede do Cantinho',
     number: 123,
