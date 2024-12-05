@@ -199,40 +199,40 @@ A API provém os seguintes endpoints:
 ```
 [
   {
-    "id": 4,
-    "created_at": "2024-12-01T22:00:00.000Z",
-    "update_at": "2024-12-01T22:00:00.000Z",
-    "active": true,
-    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
-    "name": "João Silva",
-    "rating": "4.75",
-    "approximateDate": "2024-11-15T15:30:00.000Z",
-    "description": "A comida da Feira Nordestina da Ana é simplesmente deliciosa! O tempero é incrível e me lembrou muito da culinária caseira do nordeste. Recomendo o baião de dois e o bolo de rolo. O atendimento foi impecável, e o ambiente acolhedor me fez sentir em casa.",
-    "business": 2
+    id: 4,
+    created_at: '2024-12-01T22:00:00.000Z',
+    update_at: '2024-12-01T22:00:00.000Z',
+    active: true,
+    profile_picture: 'https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100',
+    name: 'João Silva',
+    rating: '4.75',
+    approximateDate: '2024-11-15T15:30:00.000Z',
+    description: 'A comida da Feira Nordestina da Ana é simplesmente deliciosa! O tempero é incrível e me lembrou muito da culinária caseira do nordeste. Recomendo o baião de dois e o bolo de rolo. O atendimento foi impecável, e o ambiente acolhedor me fez sentir em casa.',
+    business: 2
   },
   {
-    "id": 5,
-    "created_at": "2024-12-01T22:15:00.000Z",
-    "update_at": "2024-12-01T22:15:00.000Z",
-    "active": true,
-    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
-    "name": "Mariana Oliveira",
-    "rating": "4.50",
-    "approximateDate": "2024-11-20T14:00:00.000Z",
-    "description": "Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!",
-    "business": 2
+    id: 5,
+    created_at: '2024-12-01T22:15:00.000Z',
+    update_at: '2024-12-01T22:15:00.000Z',
+    active": true,
+    profile_picture: 'https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100',
+    name: 'Mariana Oliveira',
+    rating: '4.50',
+    approximateDate: '2024-11-20T14:00:00.000Z',
+    description: 'Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!',
+    business: 2
   },
   {
-    "id": 6,
-    "created_at": "2024-12-01T22:30:00.000Z",
-    "update_at": "2024-12-01T22:30:00.000Z",
-    "active": true,
-    "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
-    "name": "Carlos Mendes",
-    "rating": "5.00",
-    "approximateDate": "2024-11-25T18:45:00.000Z",
-    "description": "Que lugar maravilhoso! A Feira Nordestina da Ana tem um cardápio autêntico e cheio de sabores inesquecíveis. Experimentei o cuscuz com carne seca e foi simplesmente divino. Além disso, a equipe é super simpática. Voltarei com certeza!",
-    "business": 2
+    id: 6,
+    created_at: '2024-12-01T22:30:00.000Z',
+    update_at: '2024-12-01T22:30:00.000Z',
+    active: true,
+    profile_picture: 'https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100',
+    name: 'Carlos Mendes',
+    rating: '5.00',
+    approximateDate: '2024-11-25T18:45:00.000Z',
+    description: 'Que lugar maravilhoso! A Feira Nordestina da Ana tem um cardápio autêntico e cheio de sabores inesquecíveis. Experimentei o cuscuz com carne seca e foi simplesmente divino. Além disso, a equipe é super simpática. Voltarei com certeza!',
+    business: 2
   }
 ]
 ```
@@ -243,16 +243,16 @@ A API provém os seguintes endpoints:
 
 ```
  {
-  "id": 5,
-  "created_at": "2024-12-01T22:15:00.000Z",
-  "update_at": "2024-12-01T22:15:00.000Z",
-  "active": true,
-  "profile_picture": "https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100",
-  "name": "Mariana Oliveira",
-  "rating": "4.50",
-  "approximateDate": "2024-11-20T14:00:00.000Z",
-  "description": "Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!",
-  "business": 2
+  id: 5,
+  created_at: '2024-12-01T22:15:00.000Z',
+  update_at: '2024-12-01T22:15:00.000Z',
+  active: true,
+  profile_picture: 'https://lh3.googleusercontent.com/a-/ALV-UjU31-KNTrKmY_Gq2r6BFT4OD-JwUTYOrQB58s0Tzlamp-hB9lNi=w36-h36-p-rp-mo-ba2-br100',
+  name: 'Mariana Oliveira',
+  rating: '4.50',
+  approximateDate: '2024-11-20T14:00:00.000Z',
+  description: 'Gostei muito da experiência na Feira Nordestina da Ana! A carne de sol estava no ponto certo e o feijão tropeiro é o melhor que já comi. Só acho que poderiam melhorar um pouco a organização das mesas. Fora isso, foi uma ótima experiência!',
+  business: 2
 }
 ```
 
